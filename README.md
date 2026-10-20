@@ -1,17 +1,17 @@
-# SimpleVecDB
+# JFVecDB
 
-[![CI](https://github.com/coderdayton/simplevecdb/actions/workflows/ci.yml/badge.svg)](https://github.com/coderdayton/simplevecdb/actions)
+[![CI](https://github.com/juanfejara/simplevecdb/actions/workflows/ci.yml/badge.svg)](https://github.com/juanfejara/simplevecdb/actions)
 [![PyPI](https://img.shields.io/pypi/v/simplevecdb?color=blue)](https://pypi.org/project/simplevecdb/)
-[![License: MIT](https://img.shields.io/github/license/coderdayton/simplevecdb)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/coderdayton/simplevecdb?style=social)](https://github.com/coderdayton/simplevecdb)
+[![License: MIT](https://img.shields.io/github/license/juanfejara/simplevecdb)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/juanfejara/simplevecdb?style=social)](https://github.com/juanfejara/simplevecdb)
 
 <a href='https://ko-fi.com/U7U01WTJF9' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 **A local-first, embedded vector database backed by SQLite and usearch.**
 
-SimpleVecDB pairs **Chroma-like ergonomics** with a **file-based** store — a SQLite database for metadata and text alongside a `usearch` HNSW index per collection. It provides high-performance vector search, quantization, and hybrid retrieval with no separate services to run. It fits local RAG pipelines, offline agents, and any application that needs production-grade vector search without the operational overhead of a hosted database.
+JFVecDB pairs **Chroma-like ergonomics** with a **file-based** store — a SQLite database for metadata and text alongside a `usearch` HNSW index per collection. It provides high-performance vector search, quantization, and hybrid retrieval with no separate services to run. It fits local RAG pipelines, offline agents, and any application that needs production-grade vector search without the operational overhead of a hosted database.
 
-## Why SimpleVecDB?
+## Why JFVecDB?
 
 - **Zero Infrastructure** — Local files on disk: a SQLite database plus a `usearch` index. No Docker, no Redis, no external services.
 - **High Performance** — usearch HNSW indexing with adaptive search: brute-force under 10k vectors (perfect recall), HNSW above that.
@@ -20,9 +20,9 @@ SimpleVecDB pairs **Chroma-like ergonomics** with a **file-based** store — a S
 - **Integrations Included** — Optional FastAPI embeddings server and LangChain/LlamaIndex adapters via the `[integrations]` extra.
 - **Production Ready** — Hybrid search (BM25 + vector), metadata filtering, multi-collection support, and automatic hardware acceleration.
 
-### When to Choose SimpleVecDB
+### When to Choose JFVecDB
 
-| Use Case                       | SimpleVecDB           | Cloud Vector DB          |
+| Use Case                       | JFVecDB           | Cloud Vector DB          |
 | :----------------------------- | :-------------------- | :----------------------- |
 | **Local RAG applications**     | ✅ Perfect fit        | ❌ Overkill + latency    |
 | **Offline-first agents**       | ✅ No internet needed | ❌ Requires connectivity |
@@ -72,7 +72,7 @@ python -c "import simplevecdb; print(simplevecdb.__version__)"
 
 ## Quickstart
 
-SimpleVecDB is just a storage and search layer — it doesn't ship an LLM
+JFVecDB is just a storage and search layer — it doesn't ship an LLM
 and won't generate embeddings for you. Bring whichever embedding source
 you already use; three common ones below.
 
@@ -157,7 +157,7 @@ in the [Setup Guide](ENV_SETUP.md).
 
 ### Option 3: LangChain or LlamaIndex
 
-Already using one of the major RAG frameworks? Use SimpleVecDB as the
+Already using one of the major RAG frameworks? Use JFVecDB as the
 vector store:
 
 ```bash
@@ -194,11 +194,11 @@ store = SimpleVecDBLlamaStore(
 ```
 
 End-to-end notebooks (including a fully local Ollama RAG) live in the
-[examples gallery](https://coderdayton.github.io/SimpleVecDB/examples/).
+[examples gallery](https://juanfejara.github.io/SimpleVecDB/examples/).
 
 ## Feature Highlights
 
-A few of the things SimpleVecDB does well — see
+A few of the things JFVecDB does well — see
 [`docs/Features.md`](docs/Features.md) for the full list.
 
 - **Vector + keyword + hybrid search** — cosine / L2 similarity, BM25
@@ -226,12 +226,12 @@ A few of the things SimpleVecDB does well — see
   server via `[server]`.
 
 For full method-level coverage, see [the Features doc](docs/Features.md)
-or the [API reference](https://coderdayton.github.io/SimpleVecDB/api/core).
+or the [API reference](https://juanfejara.github.io/JFVecDB/api/core).
 
 
 ## Performance Benchmarks
 
-**10,000 vectors, 384 dimensions, k=10 search** — [Full benchmarks →](https://coderdayton.github.io/SimpleVecDB/benchmarks)
+**10,000 vectors, 384 dimensions, k=10 search** — [Full benchmarks →](https://juanfejara.github.io/JFVecDB/benchmarks)
 
 | Quantization | Storage  | Query Time | Compression |
 | :----------- | :------- | :--------- | :---------- |
@@ -248,10 +248,10 @@ or the [API reference](https://coderdayton.github.io/SimpleVecDB/api/core).
 ## Documentation
 
 - **[Features](docs/Features.md)** — Every capability, grouped by area
-- **[Setup Guide](https://coderdayton.github.io/SimpleVecDB/ENV_SETUP)** — Environment variables, server configuration, authentication
-- **[API Reference](https://coderdayton.github.io/SimpleVecDB/api/core)** — Complete class/method documentation with type signatures
-- **[Benchmarks](https://coderdayton.github.io/SimpleVecDB/benchmarks)** — Quantization strategies, batch sizes, hardware optimization
-- **[Integration Examples](https://coderdayton.github.io/SimpleVecDB/examples)** — RAG notebooks, Ollama workflows, production patterns
+- **[Setup Guide](https://juanfejara.github.io/JFVecDB/ENV_SETUP)** — Environment variables, server configuration, authentication
+- **[API Reference](https://juanfejara.github.io/JFVecDB/api/core)** — Complete class/method documentation with type signatures
+- **[Benchmarks](https://juanfejara.github.io/JFVecDB/benchmarks)** — Quantization strategies, batch sizes, hardware optimization
+- **[Integration Examples](https://juanfejara.github.io/JFVecDB/examples)** — RAG notebooks, Ollama workflows, production patterns
 - **[Contributing Guide](CONTRIBUTING.md)** — Development setup, testing, PR guidelines
 
 ## Troubleshooting
@@ -297,33 +297,33 @@ What's on the near-term radar:
 
 For shipped capabilities, see [`docs/Features.md`](docs/Features.md) and the
 release-by-release [Changelog](CHANGELOG.md). Vote on these or propose new
-ideas in [GitHub Discussions](https://github.com/coderdayton/simplevecdb/discussions).
+ideas in [GitHub Discussions](https://github.com/juanfejara/simplevecdb/discussions).
 
 ## Contributing
 
 Contributions are welcome — bug fixes, documentation improvements, and new feature proposals alike:
 
 1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for development setup
-2. Check existing [Issues](https://github.com/coderdayton/simplevecdb/issues) and [Discussions](https://github.com/coderdayton/simplevecdb/discussions)
+2. Check existing [Issues](https://github.com/juanfejara/simplevecdb/issues) and [Discussions](https://github.com/juanfejara/simplevecdb/discussions)
 3. Open a PR with clear description and tests
 
 ## Community & Support
 
 **Get Help:**
 
-- [GitHub Discussions](https://github.com/coderdayton/simplevecdb/discussions) — Q&A and feature requests
-- [GitHub Issues](https://github.com/coderdayton/simplevecdb/issues) — Bug reports
+- [GitHub Discussions](https://github.com/juanfejara/simplevecdb/discussions) — Q&A and feature requests
+- [GitHub Issues](https://github.com/juanfejara/simplevecdb/issues) — Bug reports
 
 **Stay Updated:**
 
-- [GitHub Releases](https://github.com/coderdayton/simplevecdb/releases) — Changelog and updates
-- [Examples Gallery](https://coderdayton.github.io/SimpleVecDB/examples/) — Community-contributed notebooks
+- [GitHub Releases](https://github.com/juanfejara/simplevecdb/releases) — Changelog and updates
+- [Examples Gallery](https://juanfejara.github.io/JFVecDB/examples/) — Community-contributed notebooks
 
 ## Support the Project
 
-- **[Sponsor on Ko-fi](https://ko-fi.com/xbbvii)** — one-time donations
+- **[Sponsor on Ko-fi](https://ko-fi.com/juanfernandojaramillo)** — one-time donations
 - **Star the repository** — helps with visibility
-- **[Report issues](https://github.com/coderdayton/simplevecdb/issues)** — bug reports and feedback
+- **[Report issues](https://github.com/juanfejara/jfvecdb/issues)** — bug reports and feedback
 - **[Contribute](CONTRIBUTING.md)** — development setup and guidelines
 
 ## License
